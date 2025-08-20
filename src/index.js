@@ -1,10 +1,12 @@
 import "/src/style.css";
-import { weatherApp } from "./weatherApp";
+import { getWeaterData } from "./weather-api";
+import { displayWeather } from "./displayWeather";
 
 const locationInput = document.querySelector("#location-input");
 const submit = document.querySelector("#submit-btn");
 
 submit.addEventListener("click", (e) => {
     e.preventDefault();
-    weatherApp(locationInput.value)
+    displayWeather(locationInput.value);
+    locationInput.value = "";
 });
