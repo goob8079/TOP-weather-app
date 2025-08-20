@@ -1,0 +1,1 @@
+(()=>{"use strict";const e=document.querySelector("#location-input").value;document.querySelector("#submit-btn").addEventListener("click",()=>async function(e){try{const t=await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${e}?key=V7NAKSYNRZ9LTZHF3ZNDUQXVD`),c=await t.json();console.log(c)}catch(e){console.error(e)}}(e))})();
