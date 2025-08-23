@@ -19,7 +19,7 @@ export async function getWeaterData(location) {
         cityInfo.city = weatherData.address;
         cityInfo.temp = weatherData.currentConditions.temp;
         cityInfo.description = weatherData.currentConditions.conditions;
-        cityInfo.feelsLike = weatherData.currentConditions.feelsLike;
+        cityInfo.feelsLike = weatherData.currentConditions.feelslike;
         cityInfo.precipitation = weatherData.currentConditions.precip || 0; // 0 if no precipitation
         cityInfo.wind = weatherData.currentConditions.windspeed;
         cityInfo.forecast = weatherData.days.slice(0, 7).map((day) => ({
