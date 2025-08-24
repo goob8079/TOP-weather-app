@@ -1,4 +1,4 @@
-import "/src/style.css";
+import "./style.css";
 import { getWeaterData } from "./weather-api";
 import { displayWeather } from "./displayWeather";
 
