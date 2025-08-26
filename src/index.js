@@ -1,5 +1,4 @@
 import "./style.css";
-import { getWeaterData } from "./weather-api";
 import { displayWeather } from "./displayWeather";
 
 const locationInput = document.querySelector("#location-input");

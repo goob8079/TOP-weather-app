@@ -1,3 +1,11 @@
+body, .city-div {
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+
+    form {
+        padding-bottom: 12px;
+    }
+}
+
 .city-address-div {
     width: 100%;
     display: flex; flex-direction: column; justify-content: center; align-items: center;
