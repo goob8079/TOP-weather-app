@@ -2,8 +2,12 @@ import { getWeaterData } from "./weather-api";
 
 const cityDiv = document.querySelector(".city-div");
 const form = document.querySelector("form");
+const tempBtnsDiv = document.querySelector(".temp-btns-div");
 
 export async function displayWeather(city) {
+    cityDiv.innerHTML = "";
+    tempBtnsDiv.innerHTML = "";
+
     let isF = true;
     const cityInfo = await getWeaterData(city);
     
@@ -15,7 +19,7 @@ export async function displayWeather(city) {
         return parseFloat((f- 32) * (5/9)).toFixed(1);
     }
     const forecastTempList = [];
-    
+
     const celciusBtn = document.createElement("button");
     celciusBtn.setAttribute("id", "celcius-btn");
     celciusBtn.textContent = "°C"
@@ -67,7 +71,7 @@ export async function displayWeather(city) {
     
     const cityPrecip = document.createElement("p");
     cityPrecip.setAttribute("id", "city-precip");
-    cityPrecip.textContent = `Precipitation: ${cityInfo.precipitation}`;
+    cityPrecip.textContent = `Precipitation: ${cityInfo.precipitation}%`;
     
     const cityWind = document.createElement("p");
     cityWind.setAttribute("id", "city-wind");
@@ -95,25 +99,24 @@ export async function displayWeather(city) {
         const dayConditions = document.createElement("p");
         dayConditions.textContent = day.conditions;
 
-        const dayIcon = document.createElement("p");
-        dayIcon.textContent = day.icon;
-
         cityForecastDay.appendChild(dayDate);
         cityForecastDay.appendChild(dayTemp);
         cityForecastDay.appendChild(dayConditions);
-        cityForecastDay.appendChild(dayIcon);
         cityForecast.appendChild(cityForecastDay);
     });
     
-    form.appendChild(celciusBtn, fahrenheitBtn);
-    cityAddressDiv.appendChild(cityAddress,
-        cityTemp,
-        cityDesc,
-        cityFeelsLike,
-        cityPrecip,
-        cityWind,
-        cityAddressDiv,
-        cityForecast
-    );
-    cityDiv.appendChild(cityAddressDiv, cityForecast);
+    tempBtnsDiv.appendChild(celciusBtn);
+    tempBtnsDiv.appendChild(fahrenheitBtn);
+    form.appendChild(tempBtnsDiv);
+
+    cityAddressDiv.appendChild(cityAddress);
+    cityAddressDiv.appendChild(cityTemp);
+    cityAddressDiv.appendChild(cityDesc);
+    cityAddressDiv.appendChild(cityFeelsLike);
+    cityAddressDiv.appendChild(cityPrecip);
+    cityAddressDiv.appendChild(cityWind);
+    cityAddressDiv.appendChild(cityForecast);
+
+    cityDiv.appendChild(cityAddressDiv);
+    cityDiv.appendChild(cityForecast);
 }
